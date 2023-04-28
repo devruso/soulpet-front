@@ -24,7 +24,7 @@ export function AdicionarProduto() {
           position: "bottom-right",
           duration: 2500,
         });
-        navigate("/produto");
+        navigate("/produtos");
       })
       .catch((error) => {
         toast.error("Não foi possível adicionar um novo Produto.", {
