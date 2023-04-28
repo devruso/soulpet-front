@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ImgPETform from "../../assets/soul-pet-logo.svg";
-import "./AddPet-style.css";
+import "./Add-style.css";
 
 export function AdicionarPet() {
   const {
