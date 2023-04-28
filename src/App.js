@@ -10,6 +10,7 @@ import { EditaPet } from "./pages/EditaPet/EditaPet";
 import { AdicionarProduto } from "./pages/AdicionarProduto/AdicionarProduto";
 import { AdicionarServico } from "./pages/AdicionarServico/AdicionarServico";
 import { Produtos } from "./pages/Produtos/Produtos";
+import { EditaProduto } from "./pages/EditaProduto/EditaProduto";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/pets/editar/:id" element={<EditaPet />} />
           <Route path="/produtos/novo" element={<AdicionarProduto />} />
           <Route path="/produtos" element={<Produtos />} />
+          <Route path="/produtos/editar/:id" element={<EditaProduto />} />
           <Route path="/servicos/novo" element={<AdicionarServico />} />
 
         </Route>
