@@ -1,13 +1,25 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Button, Table } from "react-bootstrap";
+import { Button, Modal, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
+import { toast } from "react-hot-toast";
 
 export function Produtos() {
   const [produtos, setProdutos] = useState(null);
   const [filtroCategoria, setFiltroCategoria] = useState("");
   const [filtroNome, setFiltroNome] = useState("");
+  const [show, setShow] = useState(false);
+  const [idProduto, setIdProduto] = useState(null);
+
+  const handleClose = () => {
+    setIdProduto(null);
+    setShow(false);
+  };
+  const handleShow = (id) => {
+    setIdProduto(id);
+    setShow(true);
+  };
 
   useEffect(() => {
     initializeTable();
@@ -22,6 +34,26 @@ export function Produtos() {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  function onDelete() {
+    axios
+      .delete(`http://localhost:3001/produto/${idProduto}`)
+      .then((response) => {
+        toast.success(response.data.message, {
+          position: "bottom-right",
+          duration: 2000,
+        });
+        initializeTable();
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.response.data.message, {
+          position: "bottom-right",
+          duration: 2000,
+        });
+      });
+    handleClose();
   }
 
   return (
@@ -102,7 +134,7 @@ export function Produtos() {
                     <td>{produto.dataDesconto}</td>
                     <td>{produto.categoria}</td>
                     <td className="d-flex gap-2">
-                      <Button>
+                      <Button onClick={() => handleShow(produto.id)}>
                         <i className="bi bi-trash-fill"></i>
                       </Button>
                       <Button>
@@ -115,6 +147,20 @@ export function Produtos() {
           </tbody>
         </Table>
       )}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirmação</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Tem certeza que deseja excluir o cliente?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleClose}>
+            Cancelar
+          </Button>
+          <Button variant="primary" onClick={onDelete}>
+            Excluir
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
