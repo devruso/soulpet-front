@@ -11,6 +11,7 @@ import { AdicionarProduto } from "./pages/AdicionarProduto/AdicionarProduto";
 import { AdicionarServico } from "./pages/AdicionarServico/AdicionarServico";
 import { Produtos } from "./pages/Produtos/Produtos";
 import { EditaProduto } from "./pages/EditaProduto/EditaProduto";
+import { Servicos } from "./pages/Servicos/Servicos";
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
           <Route path="/produtos" element={<Produtos />} />
           <Route path="/produtos/editar/:id" element={<EditaProduto />} />
           <Route path="/servicos/novo" element={<AdicionarServico />} />
-
+          <Route path="/servicos" element={<Servicos/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
