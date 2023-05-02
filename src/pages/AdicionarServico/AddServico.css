@@ -1,4 +1,4 @@
-.container-form{
+.container-formulario{
     padding: 2.5%;
     background-color: rgb(222, 222, 215);
 }
@@ -14,10 +14,10 @@
     width: 100%;
 }
 
-H1{
+.titleForm{
     padding-top: 5%;
 }
 
-Form{
+.formAdd{
     padding-top: 5%;
 }

@@ -1,11 +1,11 @@
 
-.container-form{
-    padding: 2.5%;
+.container-formulario{
+    padding: 1.5%;
     background-color: rgb(222, 222, 215);
 }
 
 .img-form{
-    padding-top: 10%;
+   margin-top: 15%;
     align-items: center;
 }
 
