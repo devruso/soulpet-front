@@ -81,11 +81,14 @@ export function Clientes() {
                                         <td>{cliente.email}</td>
                                         <td>{cliente.telefone}</td>
                                         <td className="d-flex gap-2">
-                                            <Button onClick={() => handleShow(cliente.id)}>
+                                            <Button onClick={() => handleShow(cliente.id)} data-toggle="tooltip" title="Deletar cliente">
                                                 <i className="bi bi-trash-fill"></i>
                                             </Button>
-                                            <Button as={Link} to={`/clientes/editar/${cliente.id}`}>
+                                            <Button as={Link} to={`/clientes/editar/${cliente.id}`} data-toggle="tooltip" title="Atualizar cliente">
                                                 <i className="bi bi-pencil-fill"></i>
+                                            </Button>
+                                            <Button as={Link} to={`/clientes/informacoes/${cliente.id}`} data-toggle="tooltip" title="Informações sobre o cliente">
+                                                <i class="bi bi-info-square-fill"></i>
                                             </Button>
                                         </td>
                                     </tr>
