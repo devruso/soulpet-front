@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {Table, Button} from "react-bootstrap";
+import {Table, Button, Modal} from "react-bootstrap";
 import { Loader } from "../../components/Loader/Loader";
+import { toast } from "react-hot-toast";
 export function Servicos(){
 
     const [servicos, setServicos] = useState(null);
@@ -22,6 +23,17 @@ export function Servicos(){
         setShow(true);
       };
 
+    function onDelete(){
+      axios.delete(`http://localhost:3001/servico/${idServico}`)
+      .then(res =>{
+        toast.success("Serviço deletado", {duration:2500, position:"bottom-right"});
+        initializeTable();
+      })
+      .catch(err =>{
+        toast.error("Um erro ocorreu", {duration:2000, position:"bottom-right"});
+      });
+      handleClose();
+    };
     function initializeTable(){
         axios.get("http://localhost:3001/servicos")
         .then((res)=>{
@@ -54,7 +66,7 @@ export function Servicos(){
                       <Button onClick={() => handleShow(servico.id)} data-toggle="tooltip" title="Deletar serviço">
                         <i className="bi bi-trash-fill"></i>
                       </Button>
-                      <Button as={Link} to={`/servico/editar/${servico.id}`} data-toggle="tooltip" title="Atualizar serviço">
+                      <Button as={Link} to={`/servicos/editar/${servico.id}`} data-toggle="tooltip" title="Atualizar serviço">
                         <i className="bi bi-pencil-fill"></i>
                       </Button>
                     </td>
@@ -63,6 +75,20 @@ export function Servicos(){
         })}
       </tbody>
         </Table>)}
+        <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Confirmação</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Tem certeza que deseja excluir o serviço?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="danger" onClick={handleClose}>
+                        Cancelar
+                    </Button>
+                    <Button variant="primary" onClick={onDelete}>
+                        Excluir
+                    </Button>
+                </Modal.Footer>
+            </Modal>
     </div>
 )
 }
