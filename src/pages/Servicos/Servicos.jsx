@@ -54,7 +54,7 @@ export function Servicos(){
                       <Button onClick={() => handleShow(servico.id)} data-toggle="tooltip" title="Deletar serviço">
                         <i className="bi bi-trash-fill"></i>
                       </Button>
-                      <Button as={Link} to={`/servico/editar/${servico.id}`} data-toggle="tooltip" title="Atualizar serviço">
+                      <Button as={Link} to={`/servicos/editar/${servico.id}`} data-toggle="tooltip" title="Atualizar serviço">
                         <i className="bi bi-pencil-fill"></i>
                       </Button>
                     </td>
