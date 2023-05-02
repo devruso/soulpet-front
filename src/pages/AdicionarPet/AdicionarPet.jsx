@@ -36,14 +36,14 @@ export function AdicionarPet() {
   }
 
   return (
-    <div className="container-form">
+    <div className="container-formulario">
       <Row>
         <Col xs={5}>
           <img className="img-form" src={ImgPETform} alt="LOGO" />
         </Col>
         <Col>
-        <h1>Adicionar Novo Pet</h1>
-          <Form onSubmit={handleSubmit(onSubmit)}>
+        <h1 className="titleForm">Adicionar Novo Pet</h1>
+          <Form onSubmit={handleSubmit(onSubmit)} className="formAdd">
             <Form.Group className="mb-3">
               <Form.Label>Nome</Form.Label>
               <Form.Control
