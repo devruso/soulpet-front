@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# SoulPet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esta é uma API desenvolvida em linguagem de programação Front-end, voltado para gerenciamento de um petshop. O objetivo é oferecer uma solução para simplificar a gestão de informações relacionadas aos pets e seus proprietários.
+Nesta API você vai poder, de forma simplificada, adicionar, atualizar, deletar e listar clientes, pets, produtos e serviços.
 
-## Available Scripts
+## Tecnologias utilizadas
 
-In the project directory, you can run:
+|![](https://img.shields.io/badge/-JavaScript-black?logo=javascript&style=plastic)|![](https://img.shields.io/badge/-NodeJs-black?logo=nodedotjs&style=plastic)|![](https://img.shields.io/badge/-React-black?logo=react&style=plastic)|![](https://img.shields.io/badge/-Express-black?logo=express&style=plastic)|![](https://img.shields.io/badge/-Html-black?logo=html5&style=plastic)|
+|---|---|---|---|---|
+|![](https://img.shields.io/badge/-MySQL-black?logo=mysql&style=plastic)|![](https://img.shields.io/badge/-Postman-black?logo=postman&style=plastic)|![](https://img.shields.io/badge/-Git-black?logo=git&style=plastic)|![](https://img.shields.io/badge/-Bootstrap-black?logo=bootstrap&style=plastic)|![](https://img.shields.io/badge/-Css-black?logo=css3&style=plastic)
 
-### `npm start`
+## Instalação
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Clone este repositório: `git clone https://github.com/devruso/soulpet-front.git`
+2. Instale as dependências: `npm install`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Como executar
 
-### `npm test`
+1. Inicie o servidor: `npm start`
+2. Acesse a página em seu navegador em: `http://localhost:3000`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Funcionalidades
 
-### `npm run build`
+O programa SoulPet possui as seguintes funcionalidades:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Cadastro de pets: permite o cadastro de animais, incluindo informações como nome, tipo, porte, data de nascimento e identificação do proprietário (cliente).
+- Cadastro de clientes: permite o cadastro de clientes, incluindo informações como nome, endereço, telefone e e-mail.
+- Registro de serviços: permite o registro de serviços realizados no petshop, como banho, tosa, vacinação, entre outros.
+- Controle de produtos: possui um sistema de controle de estoque de produtos por categoria, como alimentação, medicamentos, higiene e brinquedos.
+- Registro de agendamento: possui uma seção de agendamentos para inserção de um serviço em específico, de acordo com o pet, data e status.
+- Controle de pedidos: há uma segmentação para controle de pedidos, que permite o cadastro de mesmo de acordo com quantidade, cliente e protudos solicitatos.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Como contribuir
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Para contribuir com este projeto, siga estes passos:
 
-### `npm run eject`
+1. Faça um fork deste repositório.
+2. Crie uma nova branch: `git checkout -b nome-da-sua-branch`
+3. Faça as alterações necessárias.
+4. Faça um commit com as alterações: `git commit -m "Descreva as alterações realizadas"`
+5. Faça um push para a branch: `git push origin nome-da-sua-branch`
+6. Crie um pull request.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Autoria
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- JAMILSON PESTANA
+- JULIA LOPES DA SILVA GASCHO
+- SABRINA LOPES OLIVEIRA
+- EURICO OLIVEIRA SANTOS JUNIOR
+- CLAUDIO FILHO GONÇALVES MARTINS
+- STEPHANY CANUTO DA SILVA
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Licença
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Esta aplicação utiliza a Licença MIT, o que significa que você pode usá-la, copiá-la, modificar e distribuir o código esta aplicação, desde que seja mantida a atribuição de direitos autorais e a licença seja incluída em todas as cópias e modificações do código. Para obter mais informações sobre a Licença MIT, consulte o arquivo LICENSE.md na raiz deste repositório.
