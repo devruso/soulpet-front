@@ -1,10 +1,10 @@
 import axios from "axios";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import ImgPETform from "../../assets/soul-pet-logo.svg";
 import { useState, useEffect } from "react";
+import { toast } from "react-hot-toast";
 
 export function NovoCliente() {
   const {
@@ -39,9 +39,18 @@ export function NovoCliente() {
         })
     },[selecionarEstado]);
 
+    function onSubmit(data) {
+        axios.post("http://localhost:3001/clientes", data)
+            .then(response => {
+                toast.success("Cliente adicionado.", { position: "bottom-right", duration: 2000 });
+                navigate("/clientes");
+            })
+            .catch(error => {
+                toast.error("Algo deu errado.", { position: "bottom-right", duration: 2000 });
+                console.log(error);
+            });
+    }
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const navigate = useNavigate();
 
   return (
     <div className="justify-content-between align-items-center m-4">
