@@ -45,7 +45,13 @@ export function Servicos(){
     }
     return (
     <div className="container ">
-        <h1>Serviços</h1>
+      <div className="d-flex justify-content-between mt-4">
+      <h1>Serviços</h1>
+      
+        <Button variant="light" as={Link} to="/clientes/novo" className="m-2">
+                        <i className="bi bi-plus-lg me-1"></i> Serviço
+             </Button>
+        </div>
         {servicos === null ? (<Loader/>) :
         (
          <Table striped bordered hover>
