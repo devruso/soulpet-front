@@ -10,7 +10,7 @@ export function EditaServico(){
     const {id} = useParams();
     const navigate = useNavigate();
     function onSubmit(data){
-        axios.put(`http://localhost:3001/servico/${id}`, data)
+        axios.put(`http://localhost:3001/servicos/${id}`, data)
         .then(response =>{
             toast.success("Serviço editado.", {duration:2000, position:"bottom-right"});
             navigate("/servicos");
@@ -22,7 +22,7 @@ export function EditaServico(){
     }
 
     useEffect(() =>{
-        axios.get(`http://localhost:3001/servico/${id}`)
+        axios.get(`http://localhost:3001/servicos/${id}`)
         .then(res =>{
             const {nome, preco} = res.data;
             reset({nome, preco});

@@ -24,7 +24,7 @@ export function Servicos(){
       };
 
     function onDelete(){
-      axios.delete(`http://localhost:3001/servico/${idServico}`)
+      axios.delete(`http://localhost:3001/servicos/${idServico}`)
       .then(res =>{
         toast.success("Serviço deletado", {duration:2500, position:"bottom-right"});
         initializeTable();
