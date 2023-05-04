@@ -1,6 +1,5 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
 import ImgPETform from "../../assets/soul-pet-logo.svg";
-import "./AddPet-style.css";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -45,14 +44,14 @@ export function EditaPet() {
   }, [id, reset]);
 
   return (
-    <div className="container-form">
-      <Row>
+    <div className="justify-content-between align-items-center m-4">
+      <Row className="d-flex justify-content-center align-items-center">
         <Col xs={5}>
-          <img className="img-form" src={ImgPETform} alt="LOGO" />
+          <img className="img-form ms-5" src={ImgPETform} alt="LOGO" />
         </Col>
-        <Col>
+        <Col className="justify-content-center ms-5">
           <h1>Editar Pet</h1>
-          <Form onSubmit={handleSubmit(onSubmit)}>
+          <Form className="w-75" onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3">
               <Form.Label>Nome</Form.Label>
               <Form.Control
@@ -151,7 +150,7 @@ export function EditaPet() {
               )}
             </Form.Group>
 
-            <Button variant="success" className="botao-form" type="submit">
+            <Button variant="dark" type="submit">
               Editar
             </Button>
           </Form>

@@ -173,6 +173,7 @@ export function Pedidos() {
               <th>Quantidade</th>
               <th>Cliente</th>
               <th>Produto</th>
+              <th className="d-flex justify-content-center align-items-center">Ações</th>
             </tr>
           </thead>
           <tbody>
@@ -182,7 +183,7 @@ export function Pedidos() {
                   <td className="align-middle text-wrap">{pedido.quantidade}</td>
                   <td className="align-middle text-wrap">{clienteNome[pedido.clienteId]}</td>
                   <td className="align-middle text-wrap">{produtoNome[pedido.produtoId]}</td>
-                  <td className="d-flex gap-2 align-middle text-wrap">
+                  <td className="d-flex justify-content-center align-items-center gap-2 align-middle text-wrap">
                     <Button
                       variant="danger"
                       onClick={() => handleDeletarPedido(pedido.id)}
@@ -191,7 +192,7 @@ export function Pedidos() {
                     </Button>
 
                     <Button
-                      variant="primary"
+                      variant="danger"
                       as={Link}
                       to={`/pedidos/editar/${pedido.id}`}
                     >
@@ -199,7 +200,7 @@ export function Pedidos() {
                     </Button>
 
                     <Button
-                      variant="info"
+                      variant="danger"
                       as={Link}
                       to={`/pedidos/detalhes/${pedido.id}`}
                     >
@@ -207,7 +208,7 @@ export function Pedidos() {
                     </Button>
 
                     <Button
-                      className="m-2"
+                      variant="danger"
                       onClick={() => handleShow(pedido.id)}
                     >
                       <i className="bi bi-trash-fill"></i>
