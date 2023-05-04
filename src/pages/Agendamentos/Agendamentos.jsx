@@ -25,9 +25,9 @@ export function Agendamentos() {
 
     return (
         <div className="agendamentos container">
-            <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-between align-items-center m-4">
                 <h1>Agendamentos</h1>
-                <Button as={Link} to="/agendamentos/novo" className="m-2">
+                <Button variant="light" as={Link} to="/agendamentos/novo" className="m-2">
                         <i className="bi bi-plus-lg me-1"></i> Agendamento
                     </Button>
             </div>
@@ -43,7 +43,7 @@ export function Agendamentos() {
                                 <th>cratedAt</th>
                                 <th>petId</th>
                                 <th>ServiçoId</th>
-                                <th>Ações</th>
+                                <th className="d-flex justify-content-center align-items-center">Ações</th>
 
                             </tr>
                         </thead>
@@ -51,12 +51,12 @@ export function Agendamentos() {
                            {agendamentos.map(agendamentos => {
                             return (
                                 <tr key={agendamentos.id}>
-                                    <td>{agendamentos.id}</td>
-                                    <td>{new Date(agendamentos.data).toLocaleDateString('pt-BR')}</td>
-                                    <td>{agendamentos.createdAt}</td>
-                                    <td>{agendamentos.petId}</td>
-                                    <td>{agendamentos.servicoId}</td>
-                                    <td className="d-flex gap-2">
+                                    <td className="align-middle text-wrap">{agendamentos.id}</td>
+                                    <td className="align-middle text-wrap">{new Date(agendamentos.data).toLocaleDateString('pt-BR')}</td>
+                                    <td className="align-middle text-wrap">{agendamentos.createdAt}</td>
+                                    <td className="align-middle text-wrap">{agendamentos.petId}</td>
+                                    <td className="align-middle text-wrap">{agendamentos.servicoId}</td>
+                                    <td className="d-flex justify-content-center align-items-center gap-2 align-middle text-wrap">
                                         <Button>
                                         <i className="bi bi-trash-fill"></i>
                                         </Button>

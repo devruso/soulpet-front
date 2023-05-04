@@ -45,7 +45,7 @@ export function Servicos(){
     }
     return (
     <div className="container justify-content-between align-items-center m-auto">   
-      <div className="d-flex justify-content-between mt-4">
+      <div className="d-flex justify-content-between m-4">
       <h1>Serviços</h1>
       
         <Button variant="light" as={Link} to="/servicos/novo" className="m-2">
