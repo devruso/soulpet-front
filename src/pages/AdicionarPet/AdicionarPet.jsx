@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ImgPETform from "../../assets/soul-pet-logo.svg";
-import "./Add-style.css";
+
 
 export function AdicionarPet() {
   const {
@@ -36,14 +36,14 @@ export function AdicionarPet() {
   }
 
   return (
-    <div className="container-formulario">
+    <div className="justify-content-between align-items-center m-4">
       <Row>
         <Col xs={5}>
-          <img className="img-form" src={ImgPETform} alt="LOGO" />
+          <img className="img-form ms-5 mt-5" src={ImgPETform} alt="LOGO" />
         </Col>
         <Col>
-        <h1 className="titleForm">Adicionar Novo Pet</h1>
-          <Form onSubmit={handleSubmit(onSubmit)} className="formAdd">
+        <h1 className="titleForm">Novo Pet</h1>
+          <Form className="w-75" onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3">
               <Form.Label>Nome</Form.Label>
               <Form.Control
@@ -140,9 +140,9 @@ export function AdicionarPet() {
                   {errors.clienteId.message}
                 </Form.Text>
               )}
-            </Form.Group>
+            </Form.Group >
             
-              <Button variant="success" className="botao-form" type="submit">
+              <Button variant="dark" type="submit">
                 Cadastrar
               </Button>
         

@@ -8,12 +8,11 @@ import { Pagination } from "../../components/Pagination/Pagination";
 
 export function Pets() {
   const [pets, setPets] = useState(null);
-const [currentPage, setCurrentPage] = useState(1);
-const [totalPages, setTotalPages] = useState(1);
-const [show, setShow] = useState(false);
-const [idPet, setIdPet] = useState(null);
-const limit = 5; // define o número máximo de itens por página
-  
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [show, setShow] = useState(false);
+  const [idPet, setIdPet] = useState(null);
+  const limit = 5; // define o número máximo de itens por página
 
   const handleClose = () => {
     setIdPet(null);
@@ -30,7 +29,7 @@ const limit = 5; // define o número máximo de itens por página
 
   function initializeTable() {
     axios
-    .get(`http://localhost:3001/pets?page=${currentPage}&limit=${limit}`)
+      .get(`http://localhost:3001/pets?page=${currentPage}&limit=${limit}`)
       .then((response) => {
         setPets(response.data.listaPets);
         setTotalPages(response.data.totalPages);
@@ -66,9 +65,9 @@ const limit = 5; // define o número máximo de itens por página
 
   return (
     <div className="clientes container">
-      <div className="d-flex justify-content-between align-items-center">
+      <div className="d-flex justify-content-between align-items-center m-4">
         <h1>Pets</h1>
-        <Button as={Link} to="/pets/novo">
+        <Button variant="light" as={Link} to="/pets/novo">
           <i className="bi bi-plus-lg me-2"></i> Pet
         </Button>
       </div>
@@ -84,26 +83,45 @@ const limit = 5; // define o número máximo de itens por página
                 <th>Porte</th>
                 <th>Data de Nascimento</th>
                 <th>ID Dono</th>
-                <th>Ações</th>
+                <th className="d-flex justify-content-center align-items-center">
+                  Ações
+                </th>
               </tr>
             </thead>
             <tbody>
               {pets.map((pet) => {
                 return (
                   <tr key={pet.id}>
-                    <td>{pet.nome}</td>
-                    <td>{pet.tipo}</td>
-                    <td>{pet.porte}</td>
-                    <td>{pet.dataNasc}</td>
-                    <td>{pet.clienteId}</td>
-                    <td className="d-flex gap-2">
-                      <Button onClick={() => handleShow(pet.id)}>
+                    <td className="align-middle text-wrap">{pet.nome}</td>
+                    <td className="align-middle text-wrap">{pet.tipo}</td>
+                    <td className="align-middle text-wrap">{pet.porte}</td>
+                    <td className="align-middle text-wrap">{pet.dataNasc}</td>
+                    <td className="align-middle text-wrap">{pet.clienteId}</td>
+                    <td className="d-flex justify-content-center align-items-center gap-2 align-middle text-wrap">
+                      <Button
+                        variant="danger"
+                        onClick={() => handleShow(pet.id)}
+                        data-toggle="tooltip"
+                        title="Deletar pet"
+                      >
                         <i className="bi bi-trash-fill"></i>
                       </Button>
-                      <Button as={Link} to={`/pets/editar/${pet.id}`}>
+                      <Button
+                        variant="danger"
+                        as={Link}
+                        to={`/pets/editar/${pet.id}`}
+                        data-toggle="tooltip"
+                        title="Atualizar pet"
+                      >
                         <i className="bi bi-pencil-fill"></i>
                       </Button>
-                      <Button as={Link} to={`/pets/detalhes/${pet.id}`}>
+                      <Button
+                        variant="danger"
+                        as={Link}
+                        to={`/pets/detalhes/${pet.id}`}
+                        data-toggle="tooltip"
+                        title="Informações sobre o pet"
+                      >
                         <i className="bi bi-info-square text-warning"></i>
                       </Button>
                     </td>
@@ -112,11 +130,12 @@ const limit = 5; // define o número máximo de itens por página
               })}
             </tbody>
           </Table>
-          <Pagination
-      total={totalPages}
-      currentPage={currentPage}
-      onChangePage={handlePageChange}
-    />
+          <Pagination                    
+            total={totalPages}
+            currentPage={currentPage}
+            onChangePage={handlePageChange} 
+            className="pagination"            
+          />
 
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>

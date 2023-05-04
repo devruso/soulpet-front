@@ -1,20 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Button, Modal, Table} from "react-bootstrap";
+import { Button, Modal, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { Loader } from "../../components/Loader/Loader";
-import { Form } from 'react-bootstrap';
-import ImgPETform from "../../assets/soul-pet-logo.svg";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 
 const baseUrl = "http://localhost:3001";
 
-
 export function Pedidos() {
-  
   const [pedidos, setPedidos] = useState([]);
   const [show, setShow] = useState(false);
   const [idPedido, setIdPedido] = useState(null);
@@ -23,7 +17,7 @@ export function Pedidos() {
   const [clienteNome, setClienteNome] = useState({});
   const [produtoNome, setProdutoNome] = useState({});
 
- const handleClose = () => {
+  const handleClose = () => {
     setIdPedido(null);
     setShow(false);
   };
@@ -52,14 +46,14 @@ export function Pedidos() {
       });
     handleClose();
   };
-    
 
   useEffect(() => {
     initializeTable();
   }, []);
 
   function initializeTable() {
-    axios.get(`${baseUrl}/pedidos`)
+    axios
+      .get(`${baseUrl}/pedidos`)
       .then((response) => {
         setPedidos(response.data);
       })
@@ -68,7 +62,7 @@ export function Pedidos() {
       });
   }
 
-    const filtrarPedidos = (pedido) => {
+  const filtrarPedidos = (pedido) => {
     const cliente = clienteNome[pedido.clienteId]
       ? clienteNome[pedido.clienteId].toLowerCase()
       : "";
@@ -126,77 +120,69 @@ export function Pedidos() {
         promises.push(nomeProduto);
       });
       Promise.all(promises).then(() => {
-        console.log(
-          "Clientes e Produtos carregados com sucesso."
-        );
+        console.log("Clientes e Produtos carregados com sucesso.");
       });
     }
   }, [pedidos, clienteNome, produtoNome]);
 
   return (
-    <div className="pedidos container">
-       <Row>
-        <Col>
-          <img src={ImgPETform} alt="soul-pet-logo" />
-        </Col>
-        <Col>
-      <div className="d-flex justify-content-between align-items-center">
-              <h1 className="m-4">Pedidos</h1>
-        <Button as={Link} to="/pedidos/novo">
-          <i className="bi bi-plus-lg me-2"></i> Novo Pedido
+    <div className="produtos container">
+      <div className="d-flex justify-content-between align-items-center m-4">
+        <h1>Pedidos</h1>
+        <Button variant="light" as={Link} to="/pedidos/novo">
+          <i className="bi bi-plus-lg me-2"></i> Adicionar novo pedido
         </Button>
       </div>
-      <Form>
-        <Form.Group className="mb-3">
-          <Form.Label>Filtrar por Cliente</Form.Label>
-          <Form.Control
+      <div className="d-flex justify-content-center m-3 p-2">
+        <div className="input-group mb-3 w-50 me-3">
+          <input
+            className="form-control"
             type="text"
-            placeholder="Nome do cliente:"
+            placeholder="Digite o nome do cliente..."
             value={clienteFiltro}
             onChange={(event) => setClienteFiltro(event.target.value)}
           />
-        </Form.Group>
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="bi bi-search"></i>
+            </span>
+          </div>
+        </div>
 
-        <Form.Group className="mb-3">
-          <Form.Label>Filtrar por Produto</Form.Label>
-          <Form.Control
+        <div className="input-group mb-3 w-50">
+          <input
+            className="form-control"
             type="text"
-            placeholder="Nome do produto:"
+            placeholder="Digite o nome do produto..."
             value={produtoFiltro}
             onChange={(event) => setProdutoFiltro(event.target.value)}
           />
-        </Form.Group>
-        <Button
-          variant="secondary"
-          onClick={() => {
-            setClienteFiltro("");
-            setProdutoFiltro("");
-          }}
-        >
-          Reset filtros
-        </Button>
-      </Form>
-      <hr />
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="bi bi-search"></i>
+            </span>
+          </div>
+        </div>
+      </div>
       {pedidos === null ? (
         <Loader />
       ) : (
-        <Table striped bordered hover className="text-center">
+        <Table striped bordered hover>
           <thead>
             <tr>
               <th>Quantidade</th>
               <th>Cliente</th>
               <th>Produto</th>
-             
             </tr>
           </thead>
           <tbody>
             {pedidos.filter(filtrarPedidos).map((pedido) => {
               return (
                 <tr key={pedido.id}>
-                  <td>{pedido.quantidade}</td>
-                  <td>{clienteNome[pedido.clienteId]}</td>
-                  <td>{produtoNome[pedido.produtoId]}</td>
-                  <td className="d-flex gap-2">
+                  <td className="align-middle text-wrap">{pedido.quantidade}</td>
+                  <td className="align-middle text-wrap">{clienteNome[pedido.clienteId]}</td>
+                  <td className="align-middle text-wrap">{produtoNome[pedido.produtoId]}</td>
+                  <td className="d-flex gap-2 align-middle text-wrap">
                     <Button
                       variant="danger"
                       onClick={() => handleDeletarPedido(pedido.id)}
@@ -247,9 +233,6 @@ export function Pedidos() {
           </Button>
         </Modal.Footer>
       </Modal>
-
-       </Col>
-            </Row>
     </div>
   );
 }

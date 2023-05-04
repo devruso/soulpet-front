@@ -5,8 +5,8 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import ImgProdutoform from "../../assets/petshop.png";
-import "../AdicionarPet/Add-style.css";
+import ImgPETform from "../../assets/soul-pet-logo.svg";
+
 
 export function AdicionarProduto() {
   const {
@@ -36,14 +36,14 @@ export function AdicionarProduto() {
   }
 
   return (
-    <div className="container-form">
+    <div className="justify-content-between align-items-center m-4">
       <Row>
-        <Col xs={5}>
-          <img className="img-form" src={ImgProdutoform} alt="LOGO" />
+      <Col xs={5}>
+          <img className="img-form ms-5 mt-5" src={ImgPETform} alt="LOGO" />
         </Col>
         <Col>
-          <h1>Adicionar Novo Produto</h1>
-          <Form onSubmit={handleSubmit(onSubmit)}>
+          <h1>Novo Produto</h1>
+          <Form className="w-75" onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3">
               <Form.Label>Nome</Form.Label>
               <Form.Control

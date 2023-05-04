@@ -49,13 +49,13 @@ export function Clientes() {
 
     return (
         <div className="clientes container">
-            <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-between align-items-center m-4">
                 <h1>Clientes</h1>
                     <div>
-                    <Button as={Link} to="/clientes/novo" className="m-2">
+                    <Button variant="light" as={Link} to="/clientes/novo" className="m-2">
                         <i className="bi bi-plus-lg me-1"></i> Cliente
                     </Button>
-                    <Button onClick={() => window.open('http://localhost:3001/relatorioclientes')}>
+                    <Button variant="light" onClick={() => window.open('http://localhost:3001/relatorioclientes')}>
                         <i class="bi bi-filetype-pdf"></i> Relatório de Clientes
                     </Button>
                     </div>
@@ -70,24 +70,24 @@ export function Clientes() {
                                 <th>Nome</th>
                                 <th>E-mail</th>
                                 <th>Telefone</th>
-                                <th>Ações</th>
+                                <th className="d-flex justify-content-center align-items-center">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             {clientes.map(cliente => {
                                 return (
                                     <tr key={cliente.id}>
-                                        <td>{cliente.nome}</td>
-                                        <td>{cliente.email}</td>
-                                        <td>{cliente.telefone}</td>
-                                        <td className="d-flex gap-2">
-                                            <Button onClick={() => handleShow(cliente.id)} data-toggle="tooltip" title="Deletar cliente">
+                                        <td className="align-middle text-wrap">{cliente.nome}</td>
+                                        <td className="align-middle text-wrap">{cliente.email}</td>
+                                        <td className="align-middle text-wrap">{cliente.telefone}</td>
+                                        <td className="d-flex justify-content-center align-items-center gap-2 align-middle text-wrap">
+                                            <Button variant="danger" onClick={() => handleShow(cliente.id)} data-toggle="tooltip" title="Deletar cliente">
                                                 <i className="bi bi-trash-fill"></i>
                                             </Button>
-                                            <Button as={Link} to={`/clientes/editar/${cliente.id}`} data-toggle="tooltip" title="Atualizar cliente">
+                                            <Button variant="danger"  as={Link} to={`/clientes/editar/${cliente.id}`} data-toggle="tooltip" title="Atualizar cliente">
                                                 <i className="bi bi-pencil-fill"></i>
                                             </Button>
-                                            <Button as={Link} to={`/clientes/informacoes/${cliente.id}`} data-toggle="tooltip" title="Informações sobre o cliente">
+                                            <Button variant="danger" as={Link} to={`/clientes/informacoes/${cliente.id}`} data-toggle="tooltip" title="Informações sobre o cliente">
                                                 <i class="bi bi-info-square-fill"></i>
                                             </Button>
                                         </td>
