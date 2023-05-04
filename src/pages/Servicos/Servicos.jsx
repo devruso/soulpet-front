@@ -48,7 +48,7 @@ export function Servicos(){
       <div className="d-flex justify-content-between mt-4">
       <h1>Serviços</h1>
       
-        <Button variant="light" as={Link} to="/clientes/novo" className="m-2">
+        <Button variant="light" as={Link} to="/servicos/novo" className="m-2">
                         <i className="bi bi-plus-lg me-1"></i> Serviço
              </Button>
         </div>
