@@ -111,7 +111,7 @@ export function Produtos() {
               <th>Desconto</th>
               <th className="text-nowrap">Validade do Desconto</th>
               <th>Categoria</th>
-              <th>Ações</th>
+              <th className="d-flex justify-content-center align-items-center">Ações</th>
             </tr>
           </thead>
           <tbody>
@@ -127,13 +127,13 @@ export function Produtos() {
               .map((produto) => {
                 return (
                   <tr key={produto.id}>
-                    <td>{produto.nome}</td>
-                    <td>{produto.preco}</td>
-                    <td>{produto.descricao}</td>
-                    <td>{produto.desconto}</td>
-                    <td>{produto.dataDesconto}</td>
-                    <td>{produto.categoria}</td>
-                    <td className="d-flex gap-2">
+                    <td className="align-middle text-wrap">{produto.nome}</td>
+                    <td className="align-middle text-wrap">{produto.preco}</td>
+                    <td className="align-middle text-wrap">{produto.descricao}</td>
+                    <td className="align-middle text-wrap">{produto.desconto}</td>
+                    <td className="align-middle text-wrap">{produto.dataDesconto}</td>
+                    <td className="align-middle text-wrap">{produto.categoria}</td>
+                    <td className="d-flex gap-2 align-middle text-wrap">
                       <Button onClick={() => handleShow(produto.id)} data-toggle="tooltip" title="Deletar produto">
                         <i className="bi bi-trash-fill"></i>
                       </Button>

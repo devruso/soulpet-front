@@ -54,14 +54,14 @@ export function NovoPedido() {
     }
 
     return (
-        <div className="container">
-            <Row>
-                <Col>
-                    <img src={ImgPETform} alt="soul-pet-logo" />
+        <div className="justify-content-between align-items-center m-4">
+            <Row className="d-flex justify-content-center align-items-center">
+                <Col xs={5}>
+                    <img className="img-form ms-5" src={ImgPETform} alt="soul-pet-logo" />
                 </Col>
-                <Col>
-                    <h1>Cadastrar Novo pedido</h1>
-            <Form onSubmit={handleSubmit(onSubmit)}>
+                <Col className="justify-content-center ms-5">
+                    <h1>Novo pedido</h1>
+            <Form className="w-75" onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3">
                     <Form.Control type="hidden" {...register("codigo")} value={uuidv4()}/>
                 </Form.Group>
@@ -110,20 +110,20 @@ export function NovoPedido() {
                             ))}
                         </Form.Select>
                         <br></br>       
-                        <Button variant="danger" onClick={() => remove(index)}>
+                        <Button variant="info" onClick={() => remove(index)}>
                             Remover
                         </Button>                    
                         </Form.Group>
                     ))}
                     <div className="mb-3">
-                    <Button variant="primary" onClick={() => append({ name: '' })}>
+                    <Button variant="info" onClick={() => append({ name: '' })}>
                         Adicionar novo produto
                     </Button>
                     </div>
                     </Form>
 
-                <Button variant="primary" type="submit">
-                    Cadastrar
+                <Button variant="dark" type="submit">
+                    Enviar pedido
                 </Button>
             </Form>
                 </Col>
