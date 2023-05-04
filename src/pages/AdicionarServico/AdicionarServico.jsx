@@ -16,7 +16,7 @@ export function AdicionarServico() {
 
   function onSubmit(data) {
     axios
-      .post("http://localhost:3001/servico", data)
+      .post("http://localhost:3001/servicos", data)
       .then((response) => {
         toast.success("Serviço adicionado com sucesso!", {
           position: "bottom-right",
