@@ -44,9 +44,7 @@ export function Servicos(){
         })
     }
     return (
-    <div className="container justify-content-between align-items-center m-4">
-        <h1>Serviços</h1>
-    <div className="container ">
+    <div className="container justify-content-between align-items-center m-auto">   
       <div className="d-flex justify-content-between mt-4">
       <h1>Serviços</h1>
       
@@ -99,5 +97,6 @@ export function Servicos(){
                 </Modal.Footer>
             </Modal>
     </div>
+    
 )
 }
