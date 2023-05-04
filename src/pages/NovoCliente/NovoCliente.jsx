@@ -120,26 +120,6 @@ export function NovoCliente() {
                 </Form.Text>
               )}
             </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label>Cidade</Form.Label>
-              <Form.Control
-                type="text"
-                className={errors.endereco?.cidade && "is-invalid"}
-                {...register("endereco.cidade", {
-                  required: "A cidade é obrigatória.",
-                  maxLength: {
-                    value: 255,
-                    message: "Limite de 255 caracteres.",
-                  },
-                })}
-              />
-              {errors.endereco?.cidade && (
-                <Form.Text className="invalid-feedback">
-                  {errors.endereco?.cidade.message}
-                </Form.Text>
-              )}
-            </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Estado</Form.Label>
                   <Form.Select id="uf" className={errors.endereco?.uf && "is-invalid"}{...register("endereco.uf", {required: "É obrigatório selecionar um estado"})} onChange={(event) => setSelecionarEstado(event.target.value)}>
@@ -163,7 +143,25 @@ export function NovoCliente() {
                     ))}
                   </Form.Select>
                 </Form.Group>
-
+                <Form.Group className="mb-3">
+              <Form.Label>Cep</Form.Label>
+              <Form.Control
+                type="text"
+                className={errors.endereco?.cep && "is-invalid"}
+                {...register("endereco.cep", {
+                  required: "A rua é obrigatória.",
+                  maxLength: {
+                    value: 255,
+                    message: "Limite de 255 caracteres.",
+                  },
+                })}
+              />
+              {errors.endereco?.cep && (
+                <Form.Text className="invalid-feedback">
+                  {errors.endereco?.cep.message}
+                </Form.Text>
+              )}
+            </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Rua</Form.Label>
               <Form.Control
