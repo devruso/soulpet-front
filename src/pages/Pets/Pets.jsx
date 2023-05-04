@@ -115,15 +115,6 @@ export function Pets() {
                       >
                         <i className="bi bi-pencil-fill"></i>
                       </Button>
-                      <Button
-                        variant="danger"
-                        as={Link}
-                        to={`/pets/detalhes/${pet.id}`}
-                        data-toggle="tooltip"
-                        title="Informações sobre o pet"
-                      >
-                        <i className="bi bi-info-square text-warning"></i>
-                      </Button>
                     </td>
                   </tr>
                 );
