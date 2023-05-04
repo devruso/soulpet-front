@@ -29,7 +29,7 @@ export function Pedidos() {
 
   const onDelete = () => {
     axios
-      .delete(`${baseUrl}/pedido/${idPedido}`)
+      .delete(`${baseUrl}/pedidos/${idPedido}`)
       .then((response) => {
         toast.success(response.data.message, {
           position: "bottom-right",
