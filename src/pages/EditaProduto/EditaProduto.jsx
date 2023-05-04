@@ -1,40 +1,57 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
+import ImgPETform from "../../assets/soul-pet-logo.svg";
 
 export function EditaProduto() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+  const navigate = useNavigate();
+  const { id } = useParams();
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const navigate = useNavigate();
-    const { id } = useParams();
+  function onSubmit(data) {
+    axios
+      .put(`http://localhost:3001/produto/${id}`, data)
+      .then((response) => {
+        toast.success("Produto editado.", {
+          position: "bottom-right",
+          duration: 2000,
+        });
+        navigate("/produtos");
+      })
+      .catch((error) => {
+        toast.error("Algo deu errado.", {
+          position: "bottom-right",
+          duration: 2000,
+        });
+        console.log(error);
+      });
+  }
 
-    function onSubmit(data) {
-        axios.put(`http://localhost:3001/produto/${id}`, data)
-            .then(response => {
-                toast.success("Produto editado.", { position: "bottom-right", duration: 2000 });
-                navigate("/produtos");
-            })
-            .catch(error => {
-                toast.error("Algo deu errado.", { position: "bottom-right", duration: 2000 });
-                console.log(error);
-            });
-    }
+  useEffect(() => {
+    axios.get(`http://localhost:3001/produto/${id}`).then((response) => {
+      const { nome, preco, descricao, desconto, dataDesconto, categoria } =
+        response.data;
+      reset({ nome, preco, descricao, desconto, dataDesconto, categoria });
+    });
+  }, [id, reset]);
 
-    useEffect(() => {
-        axios.get(`http://localhost:3001/produto/${id}`)
-            .then(response => {
-                const { nome, preco, descricao, desconto, dataDesconto, categoria} = response.data;
-                reset({ nome, preco, descricao, desconto, dataDesconto, categoria });
-            })
-    }, [id, reset])
-
-    return (
-        <div className="container">
-            <h1>Editar Produto</h1>
-            <Form onSubmit={handleSubmit(onSubmit)}>
+  return (
+    <div className="justify-content-between align-items-center m-4">
+      <Row className="d-flex justify-content-center align-items-center">
+        <Col xs={5}>
+          <img className="img-form ms-5" src={ImgPETform} alt="LOGO" />
+        </Col>
+        <Col className="justify-content-center ms-5">
+          <h1>Editar Produto</h1>
+          <Form className="w-75" onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3">
               <Form.Label>Nome</Form.Label>
               <Form.Control
@@ -140,10 +157,12 @@ export function EditaProduto() {
               )}
             </Form.Group>
 
-                <Button variant="primary" type="submit">
-                    Atualizar
-                </Button>
-            </Form>
-        </div>
-    );
+            <Button variant="dark" type="submit">
+              Atualizar
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </div>
+  );
 }

@@ -44,6 +44,8 @@ export function Servicos(){
         })
     }
     return (
+    <div className="container justify-content-between align-items-center m-4">
+        <h1>Serviços</h1>
     <div className="container ">
       <div className="d-flex justify-content-between mt-4">
       <h1>Serviços</h1>
@@ -52,6 +54,7 @@ export function Servicos(){
                         <i className="bi bi-plus-lg me-1"></i> Serviço
              </Button>
         </div>
+
         {servicos === null ? (<Loader/>) :
         (
          <Table striped bordered hover>
@@ -59,20 +62,20 @@ export function Servicos(){
         <tr>
           <th>Nome</th>
           <th>Preço</th>
-          <th>Ações</th>
+          <th className="d-flex justify-content-center align-items-center">Ações</th>
         </tr>
       </thead>
       <tbody>
         {servicos.map((servico) =>{
             return (
                 <tr key={servico.id} >
-                    <td>{servico.nome}</td>
-                    <td>{servico.preco}</td>
-                    <td className="d-flex gap-2 m-t-auto">
-                      <Button onClick={() => handleShow(servico.id)} data-toggle="tooltip" title="Deletar serviço">
+                    <td className="align-middle text-wrap">{servico.nome}</td>
+                    <td className="align-middle text-wrap">{servico.preco}</td>
+                    <td className="d-flex justify-content-center align-items-center gap-2 align-middle text-wrap">
+                      <Button variant="danger" onClick={() => handleShow(servico.id)} data-toggle="tooltip" title="Deletar serviço">
                         <i className="bi bi-trash-fill"></i>
                       </Button>
-                      <Button as={Link} to={`/servicos/editar/${servico.id}`} data-toggle="tooltip" title="Atualizar serviço">
+                      <Button variant="danger" as={Link} to={`/servicos/editar/${servico.id}`} data-toggle="tooltip" title="Atualizar serviço">
                         <i className="bi bi-pencil-fill"></i>
                       </Button>
                     </td>

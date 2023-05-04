@@ -58,9 +58,9 @@ export function Produtos() {
 
   return (
     <div className="produtos container">
-      <div className="d-flex justify-content-between align-items-center">
+      <div className="d-flex justify-content-between align-items-center m-4">
         <h1>Produtos</h1>
-        <Button as={Link} to="/produtos/novo">
+        <Button variant="light" as={Link} to="/produtos/novo">
           <i className="bi bi-plus-lg me-2"></i> Adicionar novo produto
         </Button>
       </div>
@@ -133,11 +133,11 @@ export function Produtos() {
                     <td className="align-middle text-wrap">{produto.desconto}</td>
                     <td className="align-middle text-wrap">{produto.dataDesconto}</td>
                     <td className="align-middle text-wrap">{produto.categoria}</td>
-                    <td className="d-flex gap-2 align-middle text-wrap">
-                      <Button onClick={() => handleShow(produto.id)} data-toggle="tooltip" title="Deletar produto">
+                    <td className="d-flex justify-content-center align-items-center gap-2 align-middle text-wrap">
+                      <Button variant="danger" onClick={() => handleShow(produto.id)} data-toggle="tooltip" title="Deletar produto">
                         <i className="bi bi-trash-fill"></i>
                       </Button>
-                      <Button as={Link} to={`/produtos/editar/${produto.id}`} data-toggle="tooltip" title="Atualizar produto">
+                      <Button variant="danger" as={Link} to={`/produtos/editar/${produto.id}`} data-toggle="tooltip" title="Atualizar produto">
                         <i className="bi bi-pencil-fill"></i>
                       </Button>
                     </td>
@@ -151,7 +151,7 @@ export function Produtos() {
         <Modal.Header closeButton>
           <Modal.Title>Confirmação</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Tem certeza que deseja excluir o cliente?</Modal.Body>
+        <Modal.Body>Tem certeza que deseja excluir o produto?</Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleClose}>
             Cancelar
