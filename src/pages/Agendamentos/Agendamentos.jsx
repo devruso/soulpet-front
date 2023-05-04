@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { Loader } from "../../components/Loader/Loader";
+import { Link } from "react-router-dom";
 
 
 export function Agendamentos() {
@@ -26,6 +27,9 @@ export function Agendamentos() {
         <div className="agendamentos container">
             <div className="d-flex justify-content-between align-items-center">
                 <h1>Agendamentos</h1>
+                <Button as={Link} to="/agendamentos/novo" className="m-2">
+                        <i className="bi bi-plus-lg me-1"></i> Agendamento
+                    </Button>
             </div>
                     {
                         agendamentos === null ?
